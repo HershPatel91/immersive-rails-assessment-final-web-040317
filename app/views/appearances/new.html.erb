@@ -1,8 +1,12 @@
 <h1>Create an Appearance</h1>
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %><br>	
+
 <%= form_for @appearance do |f| %>
   <%= f.label :rating %>
-  <%= f.number_field :rating, in: (1..5) %>
+  <%= f.number_field :rating %>
   <%= f.collection_select :episode_id, Episode.all, :id, :date %>
   <%= f.collection_select :guest_id, Guest.all, :id, :name %>
   <%= f.submit %>
